@@ -1,14 +1,19 @@
-// tsconfig.build.json
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    // Explicitly control declaration settings
     "declaration": false,
     "noEmit": false,
 
-    // 🧠 Remove high-memory options just for build
+    // Reduce memory usage
     "noUncheckedIndexedAccess": false,
     "exactOptionalPropertyTypes": false,
-    "noPropertyAccessFromIndexSignature": false
+    "noPropertyAccessFromIndexSignature": false,
+
+    "skipLibCheck": true,
+    "incremental": true,
+    "tsBuildInfoFile": "./.tsbuildinfo"
   },
-  "exclude": ["tests", "**/*.test.ts", "node_modules", "dist"]
+  "include": ["src"],
+  "exclude": ["test", "test-helper", "**/*.test.ts", "node_modules", "dist"]
 }
