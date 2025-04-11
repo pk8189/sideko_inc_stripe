@@ -8,6 +8,8 @@
     "baseUrl": "./",
     "outDir": "./dist",
     "rootDir": "src",
+    "incremental": true,
+    "tsBuildInfoFile": ".tsbuildinfo",
     "paths": {
       "@sideko-inc/stripe": ["src/index.ts"],
       "@sideko-inc/stripe/*": ["src/*"]
@@ -15,7 +17,6 @@
 
     // 🧠 COMMENT OUT IF NOT NEEDED
     "declaration": false,
-    "declarationDir": "./dist",
 
     // ✅ Still safe but lighter
     "strict": true,
