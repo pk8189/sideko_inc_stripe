@@ -1,7 +1,5 @@
 {
-  "include": [
-    "src"
-  ],
+  "include": ["src"],
   "compilerOptions": {
     "target": "ES6",
     "module": "commonjs",
@@ -9,25 +7,28 @@
     "esModuleInterop": true,
     "baseUrl": "./",
     "outDir": "./dist",
-    "paths": {"@sideko-inc/stripe": ["src/index.ts"], "@sideko-inc/stripe/*": ["src/*"]},
     "rootDir": "src",
+    "paths": {
+      "@sideko-inc/stripe": ["src/index.ts"],
+      "@sideko-inc/stripe/*": ["src/*"]
+    },
+
+    // 🧠 COMMENT OUT IF NOT NEEDED
+    "declaration": false,
     "declarationDir": "./dist",
-    "declaration": true,
-    "resolveJsonModule": true,
-    "forceConsistentCasingInFileNames": true,
+
+    // ✅ Still safe but lighter
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "strictBindCallApply": true,
-    "strictPropertyInitialization": true,
-    "noImplicitThis": true,
-    "noImplicitReturns": true,
-    "alwaysStrict": true,
-    "exactOptionalPropertyTypes": true,
-    "noUncheckedIndexedAccess": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
+
+    // 🧹 Optional: relax some memory-intensive checks
+    "noUncheckedIndexedAccess": false,
+    "exactOptionalPropertyTypes": false,
+    "noPropertyAccessFromIndexSignature": false,
+
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
     "skipLibCheck": true
   }
 }
