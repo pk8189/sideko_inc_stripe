@@ -1,0 +1,14 @@
+// tsconfig.build.json
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": false,
+    "noEmit": false,
+
+    // 🧠 Remove high-memory options just for build
+    "noUncheckedIndexedAccess": false,
+    "exactOptionalPropertyTypes": false,
+    "noPropertyAccessFromIndexSignature": false
+  },
+  "exclude": ["tests", "**/*.test.ts", "node_modules", "dist"]
+}
