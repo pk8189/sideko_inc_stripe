@@ -16,6 +16,9 @@ export class Stripe {
   // Cache of instantiated resource clients
   private _resources: Record<string, unknown> = {};
 
+  // Added this index signature to support dynamic resource access
+  [key: string]: any;
+
   constructor(opts?: StripeOptions) {
     const baseUrl =
       opts?.baseUrl ?? opts?.environment ?? Environment.Production;

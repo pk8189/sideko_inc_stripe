@@ -71,6 +71,8 @@ export class WebhookEndpointsClient extends CoreResourceClient {
     request: requests.GetRequest,
     opts?: RequestOptions,
   ): ApiPromise<types.WebhookEndpoint> {
+    const hasData = request.data && Object.keys(request.data).length > 0;
+
     return this._client.makeRequest({
       method: "get",
       path: `/v1/webhook_endpoints/${request.webhookEndpoint}`,
@@ -83,8 +85,10 @@ export class WebhookEndpointsClient extends CoreResourceClient {
           explode: true,
         }),
       ],
-      contentType: "application/x-www-form-urlencoded",
-      body: z.record(z.string(), z.any()).parse(request.data),
+      ...(hasData && {
+        contentType: "application/x-www-form-urlencoded",
+        body: z.record(z.string(), z.any()).parse(request.data),
+      }),
       responseSchema: Schemas$WebhookEndpoint.in,
       opts,
     });
@@ -100,6 +104,8 @@ export class WebhookEndpointsClient extends CoreResourceClient {
     request: requests.ListRequest,
     opts?: RequestOptions,
   ): ApiPromise<types.WebhookEndpointsListResponse> {
+    const hasData = request.data && Object.keys(request.data).length > 0;
+
     return this._client.makeRequest({
       method: "get",
       path: "/v1/webhook_endpoints",
@@ -130,8 +136,10 @@ export class WebhookEndpointsClient extends CoreResourceClient {
           explode: true,
         }),
       ],
-      contentType: "application/x-www-form-urlencoded",
-      body: z.record(z.string(), z.any()).parse(request.data),
+      ...(hasData && {
+        contentType: "application/x-www-form-urlencoded",
+        body: z.record(z.string(), z.any()).parse(request.data),
+      }),
       responseSchema: Schemas$WebhookEndpointsListResponse.in,
       opts,
     });
