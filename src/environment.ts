@@ -1,4 +1,4 @@
 export enum Environment {
   Production = "https://api.stripe.com",
-  MockServer = "http://127.0.0.1:8082/v1/mock/local/stripe/0.1.0",
+  MockServer = "https://api.sideko.dev/v1/mock/mht/sidekosdk/0.1.9",
 }

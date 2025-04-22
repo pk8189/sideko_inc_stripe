@@ -25,6 +25,8 @@ export class SuppliersClient extends CoreResourceClient {
     request: requests.ListRequest,
     opts?: RequestOptions,
   ): ApiPromise<types.V1ClimateSuppliersListResponse> {
+    const hasData = request.data && Object.keys(request.data).length > 0;
+    
     return this._client.makeRequest({
       method: "get",
       path: "/v1/climate/suppliers",
@@ -55,8 +57,10 @@ export class SuppliersClient extends CoreResourceClient {
           explode: true,
         }),
       ],
-      contentType: "application/x-www-form-urlencoded",
-      body: z.record(z.string(), z.any()).parse(request.data),
+      ...(hasData && {
+        contentType: "application/x-www-form-urlencoded",
+        body: z.record(z.string(), z.any()).parse(request.data),
+      }),
       responseSchema: Schemas$V1ClimateSuppliersListResponse.in,
       opts,
     });
